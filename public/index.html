@@ -111,7 +111,7 @@
         const results = [];
 
         inputs.forEach(input => {
-            const words = input.value.split(' ').map(word => word.trim()).filter(word => word);
+            const words = input.value.split(',').map(word => word.trim()).filter(word => word);
             if (words.length > 0) {
                 const result = words[Math.floor(Math.random() * words.length)];
                 results.push(result);
@@ -120,7 +120,7 @@
             }
         });
 
-        document.getElementById('result').textContent = `결과: ${results.join(', ')}`;
+        document.getElementById('result').textContent = `결과: ${results.join(' ')}`;
         rollCounter++;
         document.getElementById('counter').textContent = `Roll Count: ${rollCounter}`;
     }
