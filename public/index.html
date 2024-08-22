@@ -1,0 +1,26 @@
+function rollDice() {
+    const inputs = document.querySelectorAll('.word-input');
+    const results = [];
+
+    let allEmpty = true; // Flag to check if all inputs are empty
+
+    inputs.forEach(input => {
+        const words = input.value.split(',').map(word => word.trim()).filter(word => word);
+        if (words.length > 0) {
+            const result = words[Math.floor(Math.random() * words.length)];
+            results.push(result);
+            allEmpty = false; // At least one input has words
+        } else {
+            results.push("입력된 단어가 없습니다");
+        }
+    });
+
+    if (allEmpty) {
+        alert('모든 칸이 비어 있습니다. 단어를 입력하세요.');
+        return;
+    }
+
+    document.getElementById('result').textContent = `결과: ${results.join(', ')}`;
+    rollCounter++;
+    document.getElementById('counter').textContent = `Roll Count: ${rollCounter}`;
+}
